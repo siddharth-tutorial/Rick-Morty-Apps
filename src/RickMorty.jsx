@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
 import "./Rick.css";
-// import { LuDot } from "react-icons/lu";
 function RickMorty() {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     fetch("https://rickandmortyapi.com/api/character")
-      .then((response) => response.json()) // Convert the response to JSON
+      .then((response) => response.json()) //Convert the response to JSON
       .then((data) => setCharacters(data.results)) // Store the character data in state
       .catch((error) => {
         console.error("Error fetching characters:", error);
@@ -16,8 +15,9 @@ function RickMorty() {
   return (
     <div>
       <Header />
-      <h1 className=" text-white font-bold text-center">
-        The Rick and Morty API
+
+      <h1 className="bg-black text-white font-bold text-4xl text-center p-8">
+        The Rick and Morty Api
       </h1>
 
       <div className="App">
@@ -37,10 +37,10 @@ function RickMorty() {
                 <div className="content-wrapper isMAic">
                   <div className="section">
                     <a
-                      href={char.url} // Corrected the href here
+                      href={char.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="extralink ffGNdr"
+                      className="card-title"
                     >
                       <h2>{char.name}</h2>
                     </a>
@@ -85,21 +85,19 @@ function RickMorty() {
                   <br />
                   <div className="section">
                     <span className="text-gray-500">First seen in:</span>
+                    <br />
                     <a
                       href={char.episode[0]}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="extralink ffGndr"
+                      className="info-link"
                     >
-                      <br />
-                      {/* Pilot */}
-                      {char.episode[0].split("/").pop()}
+                      Episode {char.episode[0].split("/").pop()}
                     </a>
                   </div>
                 </div>
               </div>
             </div>
-          
           ))}
         </div>
       </div>
